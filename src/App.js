@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import AddEmployee from "./pages/AddEmployee";
+import Header from "./components/Header";
+import { useState } from "react";
+import employees from "./data/employees";
 
 function App() {
+  const [employeeList, setEmployeeList] = useState(employees);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              employeeList={employeeList}
+              setEmployeeList={setEmployeeList}
+            />
+          }
+        />
+        <Route
+          path="/employees"
+          element={
+            <Home
+              employeeList={employeeList}
+              setEmployeeList={setEmployeeList}
+            />
+          }
+        />
+        <Route
+          path="/add-employee"
+          element={
+            <AddEmployee
+              employeeList={employeeList}
+              setEmployeeList={setEmployeeList}
+            />
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 

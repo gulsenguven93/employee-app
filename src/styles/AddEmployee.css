@@ -1,0 +1,100 @@
+.add-employee-page {
+  max-width: 1800px;
+  margin: 10px auto;
+  padding: 40px;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #ff6101; 
+}.form-container {
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  max-width: 1400px;   
+  width: 100%;
+}
+
+.form-container h1 {
+  color: #ff6101;
+  font-size: 26px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px 40px; 
+  margin-bottom: 30px;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  height: 44px;
+  box-sizing: border-box;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+.form-actions button {
+  padding: 14px 32px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  min-width: 140px;
+  height: 48px;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"] {
+  background: #ff6101;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+}
+
+button[type="submit"]:hover {
+  background: #e55a00;
+}
+
+
+button[type="button"] {
+  background: transparent;
+  color: #decca8;
+  border: 2px solid #e7ae94;
+}
+
+button[type="button"]:hover {
+  background: #e7ae94;
+  color: #fff;
+}
+input[type="date"] {
+  position: relative;
+  padding-right: 30px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(42%) sepia(95%) saturate(3000%) hue-rotate(5deg) brightness(95%) contrast(90%);
+  cursor: pointer;
+  opacity: 1;
+  border-radius: 4px;
+}
