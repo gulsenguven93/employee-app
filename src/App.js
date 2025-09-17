@@ -5,6 +5,7 @@ import AddEmployee from "./pages/AddEmployee";
 import Header from "./components/Header";
 import { useState } from "react";
 import employees from "./data/employees";
+import EditEmployee from "./pages/EditEmployee";
 
 function App() {
   const [employeeList, setEmployeeList] = useState(employees);
@@ -34,6 +35,15 @@ function App() {
           path="/add-employee"
           element={
             <AddEmployee
+              employeeList={employeeList}
+              setEmployeeList={setEmployeeList}
+            />
+          }
+        />
+        <Route
+          path="/edit-employee/:id"
+          element={
+            <EditEmployee
               employeeList={employeeList}
               setEmployeeList={setEmployeeList}
             />

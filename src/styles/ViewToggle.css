@@ -1,0 +1,74 @@
+/* View Toggle Styles */
+.view-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  justify-content: flex-end;
+}
+
+.view-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-toggle-btn:hover {
+  border-color: #FF6101;
+  background-color: #fff5f0;
+}
+
+.view-toggle-btn.active {
+  border-color: #FF6101;
+  background-color: #FF6101;
+  color: white;
+}
+
+.view-toggle-btn.active svg {
+  color: white;
+}
+
+.view-toggle-btn svg {
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.view-toggle-btn:not(.active):hover svg {
+  color: #FF6101;
+}
+
+/* Page Header Styles */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #FF6101;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .view-toggle {
+    align-self: flex-end;
+  }
+}
