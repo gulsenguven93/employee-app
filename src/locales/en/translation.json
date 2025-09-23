@@ -49,5 +49,10 @@
         "dateOfEmployment": "Date of Employment",
         "dateOfBirth": "Date of Birth",
         "actions": "Actions"
+    },
+    "modalDelete": {
+        "title": "Delete Employee",
+        "button": "Delete Employee",
+        "text": "Are you sure you want to delete {{name}}?"
     }
 }

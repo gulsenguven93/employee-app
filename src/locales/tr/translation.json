@@ -52,5 +52,10 @@
         "dateOfEmployment": "İşe Başlama Tarihi",
         "dateOfBirth": "Doğum Tarihi",
         "actions": "İşlemler"
+    },
+    "modalDelete": {
+        "title": "Personeli Sil",
+        "button": "Personeli Sil",
+        "text": "{{name}} personelini silmek istediğinize emin misiniz?"
     }
 }
