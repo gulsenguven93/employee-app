@@ -1,0 +1,56 @@
+{
+    "addEmployee": {
+        "title": "Personel Ekle",
+        "button": "Personel Ekle"
+    },
+    "employeeCard": {
+        "email": "E-posta",
+        "phone": "Telefon",
+        "department": "Departman",
+        "position": "Pozisyon",
+        "employmentDate": "İşe Başlama Tarihi",
+        "birthDate": "Doğum Tarihi",
+        "edit": "Düzenle",
+        "delete": "Sil",
+        "editTitle": "Personeli Düzenle",
+        "deleteTitle": "Personeli Sil"
+    },
+    "app": {
+        "title": "Personel Yönetim Uygulaması"
+    },
+    "header": {
+        "employees": "Personeller",
+        "addNew": "+Ekle"
+    },
+    "home": {
+        "title": "Personel Listesi"
+    },
+    "employeeForm": {
+        "title": "Formu Düzenle",
+        "firstName": "Ad",
+        "lastName": "Soyad",
+        "dateOfEmployment": "İşe Başlama Tarihi",
+        "dateOfBirth": "Doğum Tarihi",
+        "phone": "Telefon",
+        "email": "E-posta",
+        "department": "Departman",
+        "position": "Pozisyon",
+        "pleaseSelect": "Lütfen Seçin",
+        "junior": "Yeni",
+        "manager": "Yönetici",
+        "developer": "Geliştirici",
+        "analyst": "Analist",
+        "cancel": "İptal",
+        "submit": "Personeli Güncelle"
+    },
+    "employeeList": {
+        "name": "Ad",
+        "email": "E-posta",
+        "phone": "Telefon",
+        "department": "Departman",
+        "position": "Pozisyon",
+        "dateOfEmployment": "İşe Başlama Tarihi",
+        "dateOfBirth": "Doğum Tarihi",
+        "actions": "İşlemler"
+    }
+}

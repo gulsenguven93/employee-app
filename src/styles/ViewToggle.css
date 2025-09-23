@@ -1,4 +1,3 @@
-/* View Toggle Styles */
 .view-toggle {
   display: flex;
   gap: 8px;
@@ -43,7 +42,6 @@
   color: #FF6101;
 }
 
-/* Page Header Styles */
 .page-header {
   display: flex;
   justify-content: space-between;
@@ -60,7 +58,6 @@
   margin: 0;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .page-header {
     flex-direction: column;
@@ -72,3 +69,4 @@
     align-self: flex-end;
   }
 }
+

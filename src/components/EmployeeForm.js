@@ -3,10 +3,11 @@ import "../styles/EmployeeForm.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const EmployeeForm = ({ initialData, onSubmit, buttonText, title }) => {
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -41,7 +42,7 @@ const EmployeeForm = ({ initialData, onSubmit, buttonText, title }) => {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <div>
-              <label htmlFor="firstName">FirstName</label>
+              <label htmlFor="firstName">{t("employeeForm.firstName")}</label>
               <input
                 type="text"
                 id="firstName"
@@ -52,7 +53,7 @@ const EmployeeForm = ({ initialData, onSubmit, buttonText, title }) => {
             </div>
 
             <div>
-              <label htmlFor="lastName">LastName</label>
+              <label htmlFor="lastName">{t("employeeForm.lastName")}</label>
               <input
                 type="text"
                 id="lastName"
@@ -63,7 +64,9 @@ const EmployeeForm = ({ initialData, onSubmit, buttonText, title }) => {
             </div>
 
             <div>
-              <label htmlFor="dateOfEmployment">Date of Employment</label>
+              <label htmlFor="dateOfEmployment">
+                {t("employeeForm.dateOfEmployment")}
+              </label>
               <input
                 type="date"
                 id="dateOfEmployment"
@@ -74,7 +77,9 @@ const EmployeeForm = ({ initialData, onSubmit, buttonText, title }) => {
             </div>
 
             <div>
-              <label htmlFor="dateOfBirth">Date of Birth</label>
+              <label htmlFor="dateOfBirth">
+                {t("employeeForm.dateOfBirth")}
+              </label>
               <input
                 type="date"
                 id="dateOfBirth"
@@ -85,7 +90,7 @@ const EmployeeForm = ({ initialData, onSubmit, buttonText, title }) => {
             </div>
 
             <div>
-              <label htmlFor="phone">Phone</label>
+              <label htmlFor="phone">{t("employeeForm.phone")}</label>
               <input
                 type="tel"
                 id="phone"
@@ -98,7 +103,7 @@ const EmployeeForm = ({ initialData, onSubmit, buttonText, title }) => {
             </div>
 
             <div>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">{t("employeeForm.email")}</label>
               <input
                 type="email"
                 id="email"
@@ -109,7 +114,7 @@ const EmployeeForm = ({ initialData, onSubmit, buttonText, title }) => {
             </div>
 
             <div>
-              <label htmlFor="department">Department</label>
+              <label htmlFor="department">{t("employeeForm.department")}</label>
               <input
                 type="text"
                 id="department"
@@ -120,18 +125,18 @@ const EmployeeForm = ({ initialData, onSubmit, buttonText, title }) => {
             </div>
 
             <div>
-              <label htmlFor="position">Position</label>
+              <label htmlFor="position">{t("employeeForm.position")}</label>
               <select
                 id="position"
                 name="position"
                 value={formData.position}
                 onChange={handleChange}
               >
-                <option value="">Please Select</option>
-                <option value="junior">Junior</option>
-                <option value="manager">Manager</option>
-                <option value="developer">Developer</option>
-                <option value="analyst">Analyst</option>
+                <option value="">{t("employeeForm.pleaseSelect")}</option>
+                <option value="junior">{t("employeeForm.junior")}</option>
+                <option value="manager">{t("employeeForm.manager")}</option>
+                <option value="developer">{t("employeeForm.developer")}</option>
+                <option value="analyst">{t("employeeForm.analyst")}</option>
               </select>
             </div>
 
@@ -140,8 +145,7 @@ const EmployeeForm = ({ initialData, onSubmit, buttonText, title }) => {
           <div className="form-actions">
             <button type="submit">{buttonText}</button>
             <button type="button" onClick={() => navigate("/")}>
-              {" "}
-              Cancel
+              {t("employeeForm.cancel")}
             </button>
           </div>
         </form>

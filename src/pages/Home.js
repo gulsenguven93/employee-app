@@ -4,9 +4,11 @@ import EmployeeCard from "../components/EmployeeCard";
 import ModalDelete from "../components/ModalDelete";
 import { ListIcon, CardIcon } from "../icons";
 import "../styles/ViewToggle.css";
+import { useTranslation } from "react-i18next";
 
 const Home = ({ employeeList, setEmployeeList }) => {
-  const [viewMode, setViewMode] = useState("list"); // "list" or "card"
+  const { t } = useTranslation();
+  const [viewMode, setViewMode] = useState("list");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
 
@@ -23,7 +25,7 @@ const Home = ({ employeeList, setEmployeeList }) => {
   return (
     <div className="container">
       <div className="page-header">
-        <h1 className="page-title">Employee List</h1>
+        <h1 className="page-title">{t("home.title")}</h1>
         <div className="view-toggle">
           <button
             className={`view-toggle-btn ${viewMode === "list" ? "active" : ""}`}

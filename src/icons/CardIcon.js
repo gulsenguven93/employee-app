@@ -17,9 +17,13 @@ const CardIcon = ({ size = 24, color = "#000" }) => {
         rx="2"
         stroke={color}
         strokeWidth="2"
-        fill="none"
       />
-      <path d="M3 10h18" stroke={color} strokeWidth="2" strokeLinecap="round" />
+      <path
+        d="M7 8h10M7 12h6"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
     </svg>
   );
 };

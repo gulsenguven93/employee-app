@@ -1,0 +1,53 @@
+{
+    "addEmployee": {
+        "title": "Add Employee",
+        "button": "Add Employee"
+    },
+    "employeeCard": {
+        "email": "Email",
+        "phone": "Phone",
+        "department": "Department",
+        "position": "Position",
+        "employmentDate": "Employment Date",
+        "birthDate": "Birth Date",
+        "edit": "Edit",
+        "delete": "Delete",
+        "editTitle": "Edit Employee",
+        "deleteTitle": "Delete Employee"
+    },
+    "home": {
+        "title": "Employee List"
+    },
+    "header": {
+        "employees": "Employees",
+        "addNew": "+Add"
+    },
+    "employeeForm": {
+        "title": "Edit Employee",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "dateOfEmployment": "Date of Employment",
+        "dateOfBirth": "Date of Birth",
+        "phone": "Phone",
+        "email": "Email",
+        "department": "Department",
+        "position": "Position",
+        "pleaseSelect": "Please Select",
+        "junior": "Junior",
+        "manager": "Manager",
+        "developer": "Developer",
+        "analyst": "Analyst",
+        "cancel": "Cancel",
+        "submit": "Update Employee"
+    },
+    "employeeList": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "department": "Department",
+        "position": "Position",
+        "dateOfEmployment": "Date of Employment",
+        "dateOfBirth": "Date of Birth",
+        "actions": "Actions"
+    }
+}
