@@ -48,7 +48,9 @@
         "position": "Position",
         "dateOfEmployment": "Date of Employment",
         "dateOfBirth": "Date of Birth",
-        "actions": "Actions"
+        "actions": "Actions",
+        "previous": "Previous",
+        "next": "Next"
     },
     "modalDelete": {
         "title": "Delete Employee",

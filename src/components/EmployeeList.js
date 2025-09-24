@@ -6,6 +6,7 @@ import EditIcon from "../icons/EditIcon";
 import DeleteIcon from "../icons/DeleteIcon";
 import ModalDelete from "./ModalDelete";
 import { useTranslation } from "react-i18next";
+import { usePagination } from "../hooks/usePagination";
 
 const EmployeeList = ({ employeeList, setEmployeeList }) => {
   const { t } = useTranslation();
@@ -17,6 +18,11 @@ const EmployeeList = ({ employeeList, setEmployeeList }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
+
+  const { currentPage, maxPage, currentData, next, prev, jump } = usePagination(
+    employeeList,
+    10
+  );
 
   return (
     <section className="container">
@@ -37,7 +43,7 @@ const EmployeeList = ({ employeeList, setEmployeeList }) => {
           </tr>
         </thead>
         <tbody>
-          {employeeList.map((employee) => (
+          {currentData().map((employee) => (
             <tr key={employee.id}>
               <td>
                 <input type="checkbox" />
@@ -74,6 +80,21 @@ const EmployeeList = ({ employeeList, setEmployeeList }) => {
           ))}
         </tbody>
       </table>
+
+      <div className="pagination">
+        <button onClick={() => prev()}>{t("employeeList.previous")}</button>
+
+        {Array.from({ length: maxPage }, (_, i) => (
+          <button
+            key={i}
+            onClick={() => jump(i + 1)}
+            disabled={currentPage === i + 1}
+          >
+            {i + 1}
+          </button>
+        ))}
+        <button onClick={() => next()}>{t("employeeList.next")}</button>
+      </div>
 
       <ModalDelete
         isOpen={isModalOpen}

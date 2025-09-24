@@ -45,7 +45,10 @@ const Home = ({ employeeList, setEmployeeList }) => {
       </div>
 
       {viewMode === "list" ? (
-        <EmployeeList employeeList={employeeList} onDelete={handleOpenModal} />
+        <EmployeeList
+          employeeList={employeeList}
+          setEmployeeList={setEmployeeList}
+        />
       ) : (
         <div className="cards-grid">
           {employeeList.map((employee) => (

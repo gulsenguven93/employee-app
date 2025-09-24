@@ -51,7 +51,9 @@
         "position": "Pozisyon",
         "dateOfEmployment": "İşe Başlama Tarihi",
         "dateOfBirth": "Doğum Tarihi",
-        "actions": "İşlemler"
+        "actions": "İşlemler",
+        "previous": "Önceki",
+        "next": "Sonraki"
     },
     "modalDelete": {
         "title": "Personeli Sil",
