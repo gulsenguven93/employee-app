@@ -14,7 +14,9 @@ const ModalDelete = ({ isOpen, onClose, employee, onDelete }) => {
         <h1>{t("modalDelete.title")}</h1>
         <p>
           {t("modalDelete.text", {
-            name: `${employee.firstName} ${employee.lastName}`,
+            name: employee
+              ? `${employee.firstName} ${employee.lastName}`
+              : "this employee",
           })}
         </p>
         <div className="modal-footer">
