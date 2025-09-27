@@ -8,9 +8,10 @@ const AddEmployee = ({ employeeList, setEmployeeList }) => {
   const { t } = useTranslation();
 
   const handleSubmit = (formData) => {
+    const newId = Math.max(...employeeList.map((emp) => emp.id)) + 1;
     const newEmployee = {
       ...formData,
-      id: Date.now(),
+      id: newId,
     };
     setEmployeeList([...employeeList, newEmployee]);
     navigate("/");

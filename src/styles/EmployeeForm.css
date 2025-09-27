@@ -51,6 +51,19 @@
   box-sizing: border-box;
 }
 
+.form-group input.error,
+.form-group select.error {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.1);
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
 .form-actions {
   display: flex;
   justify-content: center;
