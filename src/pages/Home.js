@@ -3,7 +3,9 @@ import EmployeeList from "../components/EmployeeList";
 import EmployeeCard from "../components/EmployeeCard";
 import ModalDelete from "../components/ModalDelete";
 import { ListIcon, CardIcon } from "../icons";
+import { usePagination } from "../hooks/usePagination";
 import "../styles/ViewToggle.css";
+import "../styles/EmployeeCard.css";
 import { useTranslation } from "react-i18next";
 
 const Home = ({ employeeList, setEmployeeList }) => {
@@ -11,6 +13,11 @@ const Home = ({ employeeList, setEmployeeList }) => {
   const [viewMode, setViewMode] = useState("list");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
+
+  const { currentPage, maxPage, currentData, next, prev, jump } = usePagination(
+    employeeList,
+    12
+  );
 
   const handleDelete = (id) => {
     const filtered = employeeList.filter((emp) => emp.id !== id);
@@ -50,15 +57,50 @@ const Home = ({ employeeList, setEmployeeList }) => {
           setEmployeeList={setEmployeeList}
         />
       ) : (
-        <div className="cards-grid">
-          {employeeList.map((employee) => (
-            <EmployeeCard
-              key={employee.id}
-              employee={employee}
-              onDelete={handleOpenModal}
-            />
-          ))}
-        </div>
+        <>
+          <div className="cards-grid">
+            {currentData().map((employee) => (
+              <EmployeeCard
+                key={employee.id}
+                employee={employee}
+                onDelete={handleOpenModal}
+              />
+            ))}
+          </div>
+
+          {maxPage > 1 && (
+            <div className="pagination">
+              <button
+                onClick={() => prev()}
+                disabled={currentPage === 1}
+                className="pagination-btn prev-btn"
+              >
+                {t("employeeList.previous")}
+              </button>
+
+              {Array.from({ length: maxPage }, (_, i) => (
+                <button
+                  key={i}
+                  onClick={() => jump(i + 1)}
+                  disabled={currentPage === i + 1}
+                  className={`pagination-btn ${
+                    currentPage === i + 1 ? "active" : ""
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+
+              <button
+                onClick={() => next()}
+                disabled={currentPage === maxPage}
+                className="pagination-btn next-btn"
+              >
+                {t("employeeList.next")}
+              </button>
+            </div>
+          )}
+        </>
       )}
 
       <ModalDelete
