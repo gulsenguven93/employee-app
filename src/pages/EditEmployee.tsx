@@ -3,8 +3,17 @@ import EmployeeForm from "../components/EmployeeForm";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { EmployeeFormData } from "../components/EmployeeForm";
 
-const EditEmployee = ({ employeeList, setEmployeeList }) => {
+interface EditEmployeeProps {
+  employeeList: EmployeeFormData[];
+  setEmployeeList: (employeeList: EmployeeFormData[]) => void;
+}
+
+const EditEmployee: React.FC<EditEmployeeProps> = ({
+  employeeList,
+  setEmployeeList,
+}) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { t } = useTranslation();

@@ -3,11 +3,35 @@ import "../styles/EmployeeForm.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useForm } from "react-hook-form";
+import { useForm, Resolver } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-const EmployeeForm = ({ initialData, onSubmit, buttonText, title }) => {
+export interface EmployeeFormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  dateOfEmployment: string;
+  dateOfBirth: string;
+  phone: string;
+  position: string;
+  department: string;
+  id: number;
+}
+
+type EmployeeFormProps = {
+  initialData?: EmployeeFormData;
+  onSubmit: (data: EmployeeFormData) => void;
+  buttonText: string;
+  title: string;
+};
+
+const EmployeeForm: React.FC<EmployeeFormProps> = ({
+  initialData,
+  onSubmit,
+  buttonText,
+  title,
+}) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -45,7 +69,8 @@ const EmployeeForm = ({ initialData, onSubmit, buttonText, title }) => {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm({
+  } = useForm<EmployeeFormData>({
+    resolver: yupResolver(schema) as unknown as Resolver<EmployeeFormData>,
     defaultValues: {
       firstName: initialData?.firstName || "",
       lastName: initialData?.lastName || "",
@@ -56,16 +81,17 @@ const EmployeeForm = ({ initialData, onSubmit, buttonText, title }) => {
       department: initialData?.department || "",
       position: initialData?.position || "",
     },
-    resolver: yupResolver(schema),
   });
 
   useEffect(() => {
     if (initialData) {
-      Object.keys(initialData).forEach((key) => {
-        if (key !== "id") {
-          setValue(key, initialData[key]);
+      (Object.keys(initialData) as (keyof EmployeeFormData)[]).forEach(
+        (key) => {
+          if (key !== "id") {
+            setValue(key, initialData[key]);
+          }
         }
-      });
+      );
     }
   }, [initialData, setValue]);
 

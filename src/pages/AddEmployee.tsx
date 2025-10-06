@@ -2,8 +2,17 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import EmployeeForm from "../components/EmployeeForm";
 import { useTranslation } from "react-i18next";
+import { EmployeeFormData } from "../components/EmployeeForm";
 
-const AddEmployee = ({ employeeList, setEmployeeList }) => {
+interface AddEmployeeProps {
+  employeeList: EmployeeFormData[];
+  setEmployeeList: (employeeList: EmployeeFormData[]) => void;
+}
+
+const AddEmployee: React.FC<AddEmployeeProps> = ({
+  employeeList,
+  setEmployeeList,
+}) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 

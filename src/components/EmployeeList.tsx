@@ -8,7 +8,27 @@ import ModalDelete from "./ModalDelete";
 import { useTranslation } from "react-i18next";
 import { usePagination } from "../hooks/usePagination";
 
-const EmployeeList = ({ employeeList, setEmployeeList }) => {
+interface EmployeeData {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  department: string;
+  position: string;
+  dateOfEmployment: string;
+  dateOfBirth: string;
+}
+
+type EmployeeListProps = {
+  employeeList: EmployeeData[];
+  setEmployeeList: (employeeList: EmployeeData[]) => void;
+};
+
+const EmployeeList: React.FC<EmployeeListProps> = ({
+  employeeList,
+  setEmployeeList,
+}) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const handleDelete = (id) => {

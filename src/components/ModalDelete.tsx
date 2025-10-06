@@ -1,8 +1,21 @@
 import React from "react";
 import "../styles/Modal.css";
 import { useTranslation } from "react-i18next";
+import { EmployeeFormData } from "./EmployeeForm";
 
-const ModalDelete = ({ isOpen, onClose, employee, onDelete }) => {
+interface ModalDeleteProps {
+  isOpen: boolean;
+  onClose: () => void;
+  employee: EmployeeFormData;
+  onDelete: () => void;
+}
+
+const ModalDelete: React.FC<ModalDeleteProps> = ({
+  isOpen,
+  onClose,
+  employee,
+  onDelete,
+}) => {
   const { t } = useTranslation();
   if (!isOpen) return null;
   return (

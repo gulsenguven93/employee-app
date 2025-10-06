@@ -4,7 +4,24 @@ import { EditIcon, DeleteIcon } from "../icons";
 import "../styles/EmployeeCard.css";
 import { useTranslation } from "react-i18next";
 
-const EmployeeCard = ({ employee, onDelete }) => {
+interface EmployeeData {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  department: string;
+  position: string;
+  dateOfEmployment: string;
+  dateOfBirth: string;
+}
+
+type EmployeeCardProps = {
+  employee: EmployeeData;
+  onDelete: (id: number) => void;
+};
+
+const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee, onDelete }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 

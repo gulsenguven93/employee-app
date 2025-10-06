@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import LanguageSelector from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
 
-const Header = () => {
-  const { t } = useTranslation();
+const Header: React.FC = () => {
+  const { t, i18n } = useTranslation();
   return (
     <div className="app-header">
       <div className="app-header-logo">ING</div>
@@ -18,7 +18,7 @@ const Header = () => {
             <Link to="/add-employee">{t("header.addNew")}</Link>
           </li>
           <li>
-            <LanguageSelector />
+            <LanguageSelector language={i18n.language} />
           </li>
         </ul>
       </nav>
