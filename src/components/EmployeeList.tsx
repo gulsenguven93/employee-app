@@ -7,6 +7,7 @@ import DeleteIcon from "../icons/DeleteIcon";
 import ModalDelete from "./ModalDelete";
 import { useTranslation } from "react-i18next";
 import { usePagination } from "../hooks/usePagination";
+import { useEmployeeStore } from "../store/employeeStore";
 
 interface EmployeeData {
   id: number;
@@ -20,24 +21,21 @@ interface EmployeeData {
   dateOfBirth: string;
 }
 
-type EmployeeListProps = {
-  employeeList: EmployeeData[];
-  setEmployeeList: (employeeList: EmployeeData[]) => void;
-};
-
-const EmployeeList: React.FC<EmployeeListProps> = ({
-  employeeList,
-  setEmployeeList,
-}) => {
+const EmployeeList = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const handleDelete = (id) => {
-    const filtered = employeeList.filter((emp) => emp.id !== id);
-    setEmployeeList(filtered);
-  };
+
+  const employeeList = useEmployeeStore((state) => state.employees);
+  const deleteEmployee = useEmployeeStore((state) => state.deleteEmployee);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [selectedEmployee, setSelectedEmployee] = useState<EmployeeData | null>(
+    null
+  );
+
+  const handleDelete = (id: number) => {
+    deleteEmployee(id);
+  };
 
   const { currentPage, maxPage, currentData, next, prev, jump } = usePagination(
     employeeList,
@@ -121,7 +119,9 @@ const EmployeeList: React.FC<EmployeeListProps> = ({
         onClose={() => setIsModalOpen(false)}
         employee={selectedEmployee}
         onDelete={() => {
-          handleDelete(selectedEmployee.id);
+          if (selectedEmployee) {
+            handleDelete(selectedEmployee.id);
+          }
           setIsModalOpen(false);
         }}
       />

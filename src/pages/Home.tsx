@@ -4,24 +4,27 @@ import EmployeeCard from "../components/EmployeeCard";
 import ModalDelete from "../components/ModalDelete";
 import { ListIcon, CardIcon } from "../icons";
 import { usePagination } from "../hooks/usePagination";
+import { useEmployeeStore } from "../store/employeeStore";
 import "../styles/ViewToggle.css";
 import "../styles/EmployeeCard.css";
 import { useTranslation } from "react-i18next";
 
-const Home = ({ employeeList, setEmployeeList }) => {
+const Home = () => {
   const { t } = useTranslation();
+  const employees = useEmployeeStore((state) => state.employees);
+  const deleteEmployee = useEmployeeStore((state) => state.deleteEmployee);
+
   const [viewMode, setViewMode] = useState("list");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
 
   const { currentPage, maxPage, currentData, next, prev, jump } = usePagination(
-    employeeList,
+    employees,
     12
   );
 
-  const handleDelete = (id) => {
-    const filtered = employeeList.filter((emp) => emp.id !== id);
-    setEmployeeList(filtered);
+  const handleDelete = (id: number) => {
+    deleteEmployee(id);
   };
 
   const handleOpenModal = (employee) => {
@@ -52,10 +55,7 @@ const Home = ({ employeeList, setEmployeeList }) => {
       </div>
 
       {viewMode === "list" ? (
-        <EmployeeList
-          employeeList={employeeList}
-          setEmployeeList={setEmployeeList}
-        />
+        <EmployeeList />
       ) : (
         <>
           <div className="cards-grid">

@@ -3,33 +3,29 @@ import EmployeeForm from "../components/EmployeeForm";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { EmployeeFormData } from "../components/EmployeeForm";
+import { useEmployeeStore } from "../store/employeeStore";
 
-interface EditEmployeeProps {
-  employeeList: EmployeeFormData[];
-  setEmployeeList: (employeeList: EmployeeFormData[]) => void;
-}
-
-const EditEmployee: React.FC<EditEmployeeProps> = ({
-  employeeList,
-  setEmployeeList,
-}) => {
+const EditEmployee: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { t } = useTranslation();
 
+  const employeeList = useEmployeeStore((state) => state.employees);
+  const updateEmployee = useEmployeeStore((state) => state.updateEmployee);
+
   const employee = employeeList.find((emp) => emp.id === Number(id));
 
   const handleSubmit = (updatedEmployee) => {
-    const updatedEmployeeList = employeeList.map((employee) =>
-      employee.id === updatedEmployee.id ? updatedEmployee : employee
-    );
-    setEmployeeList(updatedEmployeeList);
+    updateEmployee(updatedEmployee);
     navigate("/");
   };
 
   if (!employee) {
-    return <div>Employee not found</div>;
+    return (
+      <div>
+        {t("employeeForm.notFound", { defaultValue: "Employee not found" })}
+      </div>
+    );
   }
 
   return (

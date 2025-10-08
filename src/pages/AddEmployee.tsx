@@ -2,19 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import EmployeeForm from "../components/EmployeeForm";
 import { useTranslation } from "react-i18next";
-import { EmployeeFormData } from "../components/EmployeeForm";
+import { useEmployeeStore } from "../store/employeeStore";
 
-interface AddEmployeeProps {
-  employeeList: EmployeeFormData[];
-  setEmployeeList: (employeeList: EmployeeFormData[]) => void;
-}
-
-const AddEmployee: React.FC<AddEmployeeProps> = ({
-  employeeList,
-  setEmployeeList,
-}) => {
+const AddEmployee = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const employeeList = useEmployeeStore((state) => state.employees);
+  const addEmployee = useEmployeeStore((state) => state.addEmployee);
 
   const handleSubmit = (formData) => {
     const newId = Math.max(...employeeList.map((emp) => emp.id)) + 1;
@@ -22,7 +16,7 @@ const AddEmployee: React.FC<AddEmployeeProps> = ({
       ...formData,
       id: newId,
     };
-    setEmployeeList([...employeeList, newEmployee]);
+    addEmployee(newEmployee);
     navigate("/");
   };
 
