@@ -15,7 +15,11 @@ const EditEmployee: React.FC = () => {
 
   const employee = employeeList.find((emp) => emp.id === Number(id));
 
-  const handleSubmit = (updatedEmployee) => {
+  const handleSubmit = (formData: any) => {
+    const updatedEmployee = {
+      ...formData,
+      id: Number(id),
+    };
     updateEmployee(updatedEmployee);
     navigate("/");
   };

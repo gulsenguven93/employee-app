@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/EmployeeList.css";
 import EditIcon from "../icons/EditIcon";
@@ -33,8 +33,47 @@ const EmployeeList = () => {
     null
   );
 
+  // Checkbox state'leri
+  const [selectAll, setSelectAll] = useState(false);
+  const [selectedRows, setSelectedRows] = useState<Set<number>>(new Set());
+
   const handleDelete = (id: number) => {
     deleteEmployee(id);
+  };
+
+  // Select All fonksiyonu
+  const handleSelectAll = () => {
+    const newSelectAll = !selectAll;
+    setSelectAll(newSelectAll);
+
+    if (newSelectAll) {
+      // Tüm satırları seç
+      const currentPageEmployeeIds = currentData().map((emp) => emp.id);
+      setSelectedRows(new Set(currentPageEmployeeIds));
+    } else {
+      // Tüm seçimleri kaldır
+      setSelectedRows(new Set());
+    }
+  };
+
+  // Tekil satır seçimi
+  const handleRowSelect = (employeeId: number) => {
+    const newSelectedRows = new Set(selectedRows);
+
+    if (newSelectedRows.has(employeeId)) {
+      newSelectedRows.delete(employeeId);
+    } else {
+      newSelectedRows.add(employeeId);
+    }
+
+    setSelectedRows(newSelectedRows);
+
+    // Select all checkbox'ını güncelle
+    const currentPageEmployeeIds = currentData().map((emp) => emp.id);
+    const allSelected = currentPageEmployeeIds.every((id) =>
+      newSelectedRows.has(id)
+    );
+    setSelectAll(allSelected && newSelectedRows.size > 0);
   };
 
   const { currentPage, maxPage, currentData, next, prev, jump } = usePagination(
@@ -42,13 +81,23 @@ const EmployeeList = () => {
     10
   );
 
+  // Sayfa değiştiğinde checkbox state'lerini sıfırla
+  useEffect(() => {
+    setSelectAll(false);
+    setSelectedRows(new Set());
+  }, [currentPage]);
+
   return (
     <section className="container">
       <table className="table">
         <thead>
           <tr>
             <th>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                checked={selectAll}
+                onChange={handleSelectAll}
+              />
             </th>
             <th>{t("employeeList.name")}</th>
             <th>{t("employeeList.email")}</th>
@@ -64,7 +113,11 @@ const EmployeeList = () => {
           {currentData().map((employee) => (
             <tr key={employee.id}>
               <td>
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  checked={selectedRows.has(employee.id)}
+                  onChange={() => handleRowSelect(employee.id)}
+                />
               </td>
               <td>
                 {employee.firstName} {employee.lastName}

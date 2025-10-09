@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 interface Employee {
   id: number;
@@ -20,20 +21,27 @@ interface EmployeeStore {
   deleteEmployee: (id: number) => void;
 }
 
-export const useEmployeeStore = create<EmployeeStore>((set) => ({
-  employees: [],
-  setEmployees: (employees) => set({ employees }),
-  addEmployee: (employee) =>
-    set((state) => ({ employees: [...state.employees, employee] })),
-  updateEmployee: (updated) =>
-    set((state) => ({
-      employees: state.employees.map((e) =>
-        e.id === updated.id ? updated : e
-      ),
-    })),
-  deleteEmployee: (id) =>
-    set((state) => ({
-      employees: state.employees.filter((emp) => emp.id !== id),
-    })),
-}));
+export const useEmployeeStore = create<EmployeeStore>()(
+  persist(
+    (set) => ({
+      employees: [],
+      setEmployees: (employees) => set({ employees }),
+      addEmployee: (employee) =>
+        set((state) => ({ employees: [employee, ...state.employees] })),
+      updateEmployee: (updated) =>
+        set((state) => ({
+          employees: state.employees.map((e) =>
+            e.id === updated.id ? updated : e
+          ),
+        })),
+      deleteEmployee: (id) =>
+        set((state) => ({
+          employees: state.employees.filter((emp) => emp.id !== id),
+        })),
+    }),
+    {
+      name: 'employee-storage',
+    }
+  )
+);
 

@@ -1,0 +1,363 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+
+}
+
+.app-header,
+header,
+nav,
+ul,
+li {
+  border-bottom: none !important;
+  border: none !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.light-theme {
+  background-color: #ffffff;
+  color: #333333;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.light-theme .app-header {
+  background: #ffffff;
+  color: #333333;
+  border-bottom: none;
+}
+
+.app-header,
+.dark-theme .app-header,
+.light-theme .app-header {
+  border-bottom: none !important;
+  border: none !important;
+  outline: none !important;
+}
+
+header,
+.app-header *,
+.page-header,
+.page-title {
+  border-bottom: none !important;
+  border: none !important;
+}
+
+.page-header,
+.page-title,
+h1,
+h2,
+h3 {
+  border-bottom: none !important;
+}
+
+.dark-theme .app-header {
+  background: linear-gradient(90deg, #1e1e1e 0%, #2a2a2a 100%);
+  color: #ffffff;
+  border-bottom: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme body,
+.dark-theme html,
+.dark-theme #root {
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%) !important;
+  color: #ffffff !important;
+}
+
+.dark-theme .add-employee-page {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-theme .page-title {
+  color: #ff6600 !important;
+}
+
+.dark-theme .container {
+  color: #ffffff;
+}
+
+
+.dark-theme .form-container {
+  background: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 100%) !important;
+  color: #ffffff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 102, 0, 0.1);
+  border: 1px solid #333;
+}
+
+.dark-theme .form-container h1 {
+  color: #ff6600 !important;
+}
+
+.dark-theme input,
+.dark-theme select,
+.dark-theme textarea {
+  background: linear-gradient(145deg, #2a2a2a 0%, #1e1e1e 100%) !important;
+  color: #e0e0e0 !important;
+  border: 1px solid #444 !important;
+}
+
+.dark-theme input:focus,
+.dark-theme select:focus,
+.dark-theme textarea:focus {
+  border-color: #ff6600 !important;
+  box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.2), 0 4px 12px rgba(255, 102, 0, 0.1) !important;
+}
+
+.dark-theme input::placeholder {
+  color: #bbb;
+}
+
+.dark-theme label {
+  color: #e0e0e0;
+}
+
+.dark-theme .employee-card {
+  background: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 100%);
+  border: 1px solid #333;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .employee-card h3,
+.dark-theme .employee-card p {
+  color: #e0e0e0;
+}
+
+.dark-theme .employee-card:hover {
+  background: linear-gradient(145deg, #2a2a2a 0%, #3a3a3a 100%);
+  box-shadow: 0 8px 24px rgba(255, 102, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.4);
+  border-color: #ff6600;
+}
+
+.dark-theme .pagination-btn,
+.dark-theme .pagination button {
+  background: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 100%);
+  color: #e0e0e0 !important;
+  border: 1px solid #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dark-theme .pagination-btn:hover:not(:disabled),
+.dark-theme .pagination button:hover:not(:disabled) {
+  background: linear-gradient(145deg, #ff6600 0%, #ff8533 100%);
+  color: #e0e0e0;
+  border-color: #ff6600;
+  box-shadow: 0 4px 16px rgba(255, 102, 0, 0.3);
+}
+
+.dark-theme .pagination-btn.active,
+.dark-theme .pagination button:disabled {
+  background: linear-gradient(145deg, #ff6600 0%, #ff8533 100%);
+  color: #e0e0e0;
+  border-color: #ff6600;
+  box-shadow: 0 4px 16px rgba(255, 102, 0, 0.4);
+}
+
+.dark-theme table,
+.dark-theme .table {
+  background: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 100%);
+  border: 1px solid #333;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme th,
+.dark-theme .table th {
+  background: linear-gradient(90deg, #2a2a2a 0%, #1e1e1e 100%);
+  color: #ff6600 !important;
+  border: none;
+  padding: 16px 20px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  border-bottom: none;
+}
+
+.dark-theme td,
+.dark-theme .table td {
+  border: none;
+  color: #e0e0e0 !important;
+  padding: 14px 20px;
+  border-bottom: 1px solid #333;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+}
+
+/* Hover efekti sadece action ikonlarında olsun, metin alanlarında olmasın */
+.dark-theme tr:hover td:not(:last-child) {
+  background: transparent;
+  transform: none;
+  box-shadow: none;
+  border: none;
+  margin: 0;
+}
+
+.dark-theme tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.dark-theme tr:nth-child(odd) td {
+  background: rgba(255, 255, 255, 0.01);
+}
+
+/* Tablo hover efektleri - EmployeeList için */
+.dark-theme .table tr:hover {
+  background: linear-gradient(145deg, rgba(255, 102, 0, 0.2) 0%, rgba(255, 102, 0, 0.1) 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(255, 102, 0, 0.4), 0 0 0 1px rgba(255, 102, 0, 0.5);
+  border-radius: 8px;
+  margin: 2px;
+}
+
+/* Action Icons in Table - Sadece bu ikonlarda hover efekti olsun */
+.dark-theme .action-icon,
+.dark-theme .edit-icon,
+.dark-theme .delete-icon,
+.dark-theme .edit-btn,
+.dark-theme .delete-btn {
+  color: #ff6600;
+  cursor: pointer;
+}
+
+.dark-theme .action-icon:hover,
+.dark-theme .edit-icon:hover,
+.dark-theme .delete-icon:hover,
+.dark-theme .edit-btn:hover,
+.dark-theme .delete-btn:hover {
+  color: #e0e0e0;
+  background: linear-gradient(145deg, rgba(255, 102, 0, 0.3) 0%, rgba(255, 102, 0, 0.2) 100%) !important;
+  box-shadow: 0 0 12px rgba(255, 102, 0, 0.6);
+  border: 1px solid rgba(255, 102, 0, 0.5);
+}
+
+.dark-theme td:hover:not(:has(.action-icon):not(:has(.edit-icon):not(:has(.delete-icon)))) {
+  background: inherit !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.dark-theme tr {
+  position: relative;
+}
+
+.dark-theme tr:hover {
+  background: transparent;
+}
+
+.dark-theme tr:hover::before {
+  display: none;
+}
+
+.dark-theme button[type="button"] {
+  background-color: transparent;
+  color: #ff6600;
+  border-color: #ff6600;
+}
+
+.dark-theme button[type="button"]:hover {
+  background-color: #ff6600;
+  color: #e0e0e0;
+}
+
+.dark-theme .modal-content {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #333;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.dark-theme .modal-content h2 {
+  color: #e0e0e0;
+}
+
+/* View Toggle */
+.dark-theme .view-toggle-btn {
+  background: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 100%);
+  color: #e0e0e0;
+  border: 1px solid #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dark-theme .view-toggle-btn.active {
+  background: linear-gradient(145deg, #ff6600 0%, #ff8533 100%);
+  color: #e0e0e0;
+  border-color: #ff6600;
+  box-shadow: 0 4px 16px rgba(255, 102, 0, 0.3);
+}
+
+.dark-theme .view-toggle-btn:hover {
+  background: linear-gradient(145deg, #2a2a2a 0%, #3a3a3a 100%);
+}
+
+.dark-theme input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.dark-theme .error-message {
+  color: #ff6b6b;
+}
+
+.dark-theme input[type="checkbox"] {
+  accent-color: #ff6600;
+  cursor: pointer;
+}
+
+.dark-theme input[type="checkbox"]:hover {
+  accent-color: #ff8533;
+}
+
+.dark-theme ::-webkit-scrollbar {
+}
+
+.dark-theme ::-webkit-scrollbar-track {
+  background: linear-gradient(90deg, #1e1e1e 0%, #2a2a2a 100%);
+}
+
+.dark-theme ::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #ff6600 0%, #ff8533 100%);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #ff8533 0%, #ffa500 100%);
+  box-shadow: 0 2px 8px rgba(255, 102, 0, 0.4);
+}
+
+/* Premium Animations */
+.dark-theme * {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glass Effect for Cards */
+.dark-theme .employee-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 102, 0, 0.1) 0%, transparent 50%);
+  border-radius: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dark-theme .employee-card:hover::before {
+  opacity: 1;
+}
+

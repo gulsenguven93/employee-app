@@ -8,6 +8,7 @@ import { useEmployeeStore } from "../store/employeeStore";
 import "../styles/ViewToggle.css";
 import "../styles/EmployeeCard.css";
 import { useTranslation } from "react-i18next";
+import { useTheme } from "../context/ThemeContext";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -17,6 +18,8 @@ const Home = () => {
   const [viewMode, setViewMode] = useState("list");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
+
+  const { theme } = useTheme();
 
   const { currentPage, maxPage, currentData, next, prev, jump } = usePagination(
     employees,
@@ -33,7 +36,9 @@ const Home = () => {
   };
 
   return (
-    <div className="container">
+    <div
+      className={`container ${theme === "dark" ? "dark-mode" : "light-mode"}`}
+    >
       <div className="page-header">
         <h1 className="page-title">{t("home.title")}</h1>
         <div className="view-toggle">
