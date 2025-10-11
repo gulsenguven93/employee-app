@@ -3,24 +3,22 @@ import EmployeeForm from "../components/EmployeeForm";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useEmployeeStore } from "../store/employeeStore";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import { updateEmployee } from "../store/employeeSlice";
 
 const EditEmployee: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
-  const employeeList = useEmployeeStore((state) => state.employees);
-  const updateEmployee = useEmployeeStore((state) => state.updateEmployee);
+  const employeeList = useSelector((state: RootState) => state.employees.list);
 
   const employee = employeeList.find((emp) => emp.id === Number(id));
 
-  const handleSubmit = (formData: any) => {
-    const updatedEmployee = {
-      ...formData,
-      id: Number(id),
-    };
-    updateEmployee(updatedEmployee);
+  const handleSubmit = (updatedEmployee) => {
+    dispatch(updateEmployee(updatedEmployee));
     navigate("/");
   };
 

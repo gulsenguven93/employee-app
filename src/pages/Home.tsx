@@ -4,22 +4,24 @@ import EmployeeCard from "../components/EmployeeCard";
 import ModalDelete from "../components/ModalDelete";
 import { ListIcon, CardIcon } from "../icons";
 import { usePagination } from "../hooks/usePagination";
-import { useEmployeeStore } from "../store/employeeStore";
 import "../styles/ViewToggle.css";
 import "../styles/EmployeeCard.css";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../context/ThemeContext";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store/store";
+import { deleteEmployee } from "../store/employeeSlice";
 
 const Home = () => {
   const { t } = useTranslation();
-  const employees = useEmployeeStore((state) => state.employees);
-  const deleteEmployee = useEmployeeStore((state) => state.deleteEmployee);
+  const dispatch = useDispatch();
+  const { theme } = useTheme();
+
+  const employees = useSelector((state: RootState) => state.employees.list);
 
   const [viewMode, setViewMode] = useState("list");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
-
-  const { theme } = useTheme();
 
   const { currentPage, maxPage, currentData, next, prev, jump } = usePagination(
     employees,
@@ -27,7 +29,7 @@ const Home = () => {
   );
 
   const handleDelete = (id: number) => {
-    deleteEmployee(id);
+    dispatch(deleteEmployee(id));
   };
 
   const handleOpenModal = (employee) => {

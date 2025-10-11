@@ -5,19 +5,20 @@ import AddEmployee from "./pages/AddEmployee";
 import Header from "./components/Header";
 import EditEmployee from "./pages/EditEmployee";
 import employees from "./data/employees";
-import { useEmployeeStore } from "./store/employeeStore";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "./store/store";
+import { setEmployees } from "./store/employeeSlice";
 import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
-  const employeeList = useEmployeeStore((state) => state.employees);
-  const setEmployees = useEmployeeStore((state) => state.setEmployees);
+  const dispatch = useDispatch();
+  const employeeList = useSelector((state: RootState) => state.employees.list);
 
   useEffect(() => {
     if (employeeList.length === 0) {
-      setEmployees(employees);
+      dispatch(setEmployees(employees));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch, employeeList.length]);
 
   return (
     <ThemeProvider>

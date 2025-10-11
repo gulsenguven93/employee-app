@@ -7,7 +7,9 @@ import DeleteIcon from "../icons/DeleteIcon";
 import ModalDelete from "./ModalDelete";
 import { useTranslation } from "react-i18next";
 import { usePagination } from "../hooks/usePagination";
-import { useEmployeeStore } from "../store/employeeStore";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store/store";
+import { deleteEmployee } from "../store/employeeSlice";
 
 interface EmployeeData {
   id: number;
@@ -25,8 +27,8 @@ const EmployeeList = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const employeeList = useEmployeeStore((state) => state.employees);
-  const deleteEmployee = useEmployeeStore((state) => state.deleteEmployee);
+  const dispatch = useDispatch();
+  const employeeList = useSelector((state: RootState) => state.employees.list);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState<EmployeeData | null>(
@@ -38,7 +40,7 @@ const EmployeeList = () => {
   const [selectedRows, setSelectedRows] = useState<Set<number>>(new Set());
 
   const handleDelete = (id: number) => {
-    deleteEmployee(id);
+    dispatch(deleteEmployee(id));
   };
 
   // Select All fonksiyonu

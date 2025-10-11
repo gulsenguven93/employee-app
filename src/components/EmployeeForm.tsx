@@ -96,7 +96,11 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
   }, [initialData, setValue]);
 
   const onFormSubmit = (data) => {
-    onSubmit(data);
+    const formData = {
+      ...data,
+      id: initialData?.id || 0,
+    };
+    onSubmit(formData);
   };
 
   return (
