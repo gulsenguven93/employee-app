@@ -1,70 +1,117 @@
-# Getting Started with Create React App
+# Employee Management App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React ve TypeScript kullanılarak geliştirilmiş, **Redux Toolkit** tabanlı bir **çalışan yönetim uygulaması**.  
+Kullanıcılar çalışan ekleme, düzenleme, silme işlemleri yapabilir; liste ve kart görünümleri arasında geçiş yapabilir.  
+Ayrıca arama, sayfalama (pagination), tema (dark/light) ve çoklu dil desteği (i18n) özellikleriyle modern bir yönetim paneli deneyimi sunar.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Özellikler
 
-### `npm start`
+- **Redux Toolkit** ile global state yönetimi
+- **Redux Persist** ile localStorage'da veri saklama
+- **CRUD işlemleri (Ekleme, Görüntüleme, Güncelleme, Silme)**
+- **Gerçek zamanlı arama / filtreleme sistemi** (firstName, lastName, email, department, position)
+- **List ve Card görünüm modları**
+- **Karanlık / Aydınlık tema desteği** (Context API ile)
+- **Çoklu dil desteği (i18n)**
+- **Pagination (sayfalama) sistemi**
+- **Silme işlemleri için Modal onayı**
+- **Select All** checkbox functionality
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Kullanılan Teknolojiler
 
-### `npm test`
+- **React 18**
+- **TypeScript**
+- **Redux Toolkit**
+- **Redux Persist**
+- **Context API** (Theme için)
+- **React Router**
+- **i18next**
+- **Custom CSS**
+- **Create React App**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Kurulum ve Çalıştırma
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1. Projeyi klonlayın
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/gulsenguven93/employee-app.git
+cd employee-app
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Bağımlılıkları yükle
 
-### `npm run eject`
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 3. Uygulamayı çalıştır
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Uygulama `http://localhost:3000` adresinde çalışacaktır.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## Proje Yapısı
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+src/
+├── components/          # React component'leri
+│   ├── EmployeeCard.tsx
+│   ├── EmployeeForm.tsx
+│   ├── EmployeeList.tsx
+│   ├── Header.tsx
+│   ├── LanguageSelector.tsx
+│   └── ModalDelete.tsx
+├── context/            # Context API (Theme)
+│   └── ThemeContext.tsx
+├── store/              # Redux store
+│   ├── store.ts
+│   └── employeeSlice.ts
+├── pages/              # Sayfa component'leri
+│   ├── Home.tsx
+│   ├── AddEmployee.tsx
+│   └── EditEmployee.tsx
+├── hooks/              # Custom hooks
+│   └── usePagination.ts
+├── styles/             # CSS dosyaları
+├── locales/            # i18n çeviri dosyaları
+└── data/               # Mock data
+    └── employees.ts
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## Özellik Detayları
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Arama Sistemi
 
-### Analyzing the Bundle Size
+- **Gerçek zamanlı arama**: Yazdıkça sonuçlar filtrelenir
+- **Çoklu alan araması**: firstName, lastName, email, department, position alanlarında arama
+- **Case-insensitive**: Büyük/küçük harf duyarsız
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Tema Sistemi
 
-### Making a Progressive Web App
+- **Dark/Light mode**: Header'daki buton ile geçiş
+- **Context API**: Global tema yönetimi
+- **Premium görünüm**: Gradient'lar ve animasyonlar
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### State Management
 
-### Advanced Configuration
+- **Redux Toolkit**: Modern Redux kullanımı
+- **Redux Persist**: Sayfa yenilendiğinde veri korunur
+- **TypeScript**: Tip güvenliği
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Çoklu Dil Desteği
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **i18next**: Profesyonel i18n çözümü
+- **Türkçe/İngilizce**: Dil seçici ile geçiş
+- **Dinamik çeviri**: Tüm metinler çevrilebilir
