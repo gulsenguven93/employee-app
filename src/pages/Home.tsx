@@ -16,15 +16,24 @@ const Home = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { theme } = useTheme();
+  const [search, setSearch] = useState("");
 
   const employees = useSelector((state: RootState) => state.employees.list);
 
   const [viewMode, setViewMode] = useState("list");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const filteredEmployees = employees.filter(
+    (employee) =>
+      employee.firstName.toLowerCase().includes(search.toLowerCase()) ||
+      employee.lastName.toLowerCase().includes(search.toLowerCase()) ||
+      employee.email.toLowerCase().includes(search.toLowerCase()) ||
+      employee.department.toLowerCase().includes(search.toLowerCase()) ||
+      employee.position.toLowerCase().includes(search.toLowerCase())
+  );
 
   const { currentPage, maxPage, currentData, next, prev, jump } = usePagination(
-    employees,
+    filteredEmployees,
     12
   );
 
@@ -44,6 +53,23 @@ const Home = () => {
       <div className="page-header">
         <h1 className="page-title">{t("home.title")}</h1>
         <div className="view-toggle">
+          <input
+            type="text"
+            placeholder={
+              t("employeeList.searchPlaceholder") || "Search by name..."
+            }
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="search-input"
+            style={{
+              padding: "8px",
+              width: "250px",
+              height: "23px",
+              marginBottom: "16px",
+              borderRadius: "6px",
+              border: "1px solid #ccc",
+            }}
+          />
           <button
             className={`view-toggle-btn ${viewMode === "list" ? "active" : ""}`}
             onClick={() => setViewMode("list")}
@@ -62,7 +88,7 @@ const Home = () => {
       </div>
 
       {viewMode === "list" ? (
-        <EmployeeList />
+        <EmployeeList employees={filteredEmployees} />
       ) : (
         <>
           <div className="cards-grid">

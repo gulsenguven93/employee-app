@@ -62,7 +62,8 @@
         "dateOfBirth": "Date of Birth",
         "actions": "Actions",
         "previous": "Previous",
-        "next": "Next"
+        "next": "Next",
+        "searchPlaceholder": "Search by name..."
     },
     "modalDelete": {
         "title": "Delete Employee",

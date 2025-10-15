@@ -22,13 +22,15 @@ interface EmployeeData {
   dateOfEmployment: string;
   dateOfBirth: string;
 }
+type EmployeeListProps = {
+  employees: EmployeeData[];
+};
 
-const EmployeeList = () => {
+const EmployeeList: React.FC<EmployeeListProps> = ({ employees }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const employeeList = useSelector((state: RootState) => state.employees.list);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState<EmployeeData | null>(
@@ -79,7 +81,7 @@ const EmployeeList = () => {
   };
 
   const { currentPage, maxPage, currentData, next, prev, jump } = usePagination(
-    employeeList,
+    employees,
     10
   );
 

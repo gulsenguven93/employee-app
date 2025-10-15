@@ -65,7 +65,8 @@
         "dateOfBirth": "Doğum Tarihi",
         "actions": "İşlemler",
         "previous": "Önceki",
-        "next": "Sonraki"
+        "next": "Sonraki",
+        "searchPlaceholder": "Ad ile arama..."
     },
     "modalDelete": {
         "title": "Personeli Sil",
